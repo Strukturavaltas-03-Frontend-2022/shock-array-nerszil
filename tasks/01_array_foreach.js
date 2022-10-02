@@ -39,7 +39,9 @@ function copyArrayElements(names = ['Ali', 'Géza', 'Botond']) {
  * @desc Ha segítség kell, nézd meg a példafüggvényt feljebb.
  */
 const copyFoodArray = (food = ['milk', 'bread', 'apple']) => {
-    // return;
+    const namesCopy = [];
+    food.forEach( food => namesCopy.push(food) );
+    return namesCopy;
 }
 
 /**
@@ -49,19 +51,19 @@ const copyFoodArray = (food = ['milk', 'bread', 'apple']) => {
  * betűt tartalmaznak, egy új tömbben.
  * @param {string[]} [names=['Bill', 'Anna']] names - a nevek tömbje.
  * @returns {string[]} - az `a` betűt tartalmazó nevek tömbje.
- * @desc a string típus includes metódusa megmonja, hogy egy adott string  
+ * @desc a string típus includes metódusa megmondja, hogy egy adott string  
  * benne van-e a másikban? Ez nem csak egy karakter lehet, hanem akár egy  
  * hosszabb text is, ha benne van true, ha nincs false a visszatérési értéke.
  * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
  */
 const findNamesWithA = (names = ['Bill', 'Anna']) => {
-    // 
+    const namesWithA = [];
     names.forEach( name => {
         if (name.includes('a')) {
             namesWithA.push(name);
         }
     });
-    // 
+    return namesWithA;
 }
 
 /**
@@ -74,7 +76,8 @@ const findNamesWithA = (names = ['Bill', 'Anna']) => {
  * @desc a lényeges változás az if feltételben lesz.
  */
 const findBigPrices = (prices=[121, 41, 56, 1245]) => {
-    // 
+    prices.filter( price => price > 100)  
+    return prices;
 }
 
 /**
@@ -90,6 +93,15 @@ const findBigPrices = (prices=[121, 41, 56, 1245]) => {
  * EXPORTÁLD A FÜGGVÉNYT!
  */
 
+ const findEvens = (prices=[121, 41, 56, 1245]) => {
+    const evenPrices = [];
+    prices.forEach(price => {
+        if (price % 2 === 0) {
+            evenPrices.push(price);
+        }
+    })
+    return evenPrices;
+}
 
 
 /**
@@ -106,7 +118,17 @@ const findBigPrices = (prices=[121, 41, 56, 1245]) => {
  * EXPORTÁLD A FÜGGVÉNYT!
  */
 
+const findHigherSalariedEmployees = (employees=[{name: '', salary: 200000}]) => {
+    const richestPeople = [];
+    employees.forEach(employees => {
+        if (employees.salary > 300000) {
+            richestPeople.push(employees);
+        }
+    });
+    return richestPeople;
+}
 
+export { findHigherSalariedEmployees }
 
 /**
  * 6. feladat
@@ -121,7 +143,14 @@ const findBigPrices = (prices=[121, 41, 56, 1245]) => {
  * @desc annyiban nehezebb az előzőnél, hogy két feltételt kell vizsgálnod.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
-
+ const findEmployeesFromMarketing=function (employees=[{name: '', salary: 200000, dep: 'marketing'}]) { 
+    const marketingArr =[]
+    employees.forEach(item=>{
+        if(item.salary>300000 && item.dep==='marketing') marketingArr.push(item) 
+    })
+    return marketingArr
+    }
+    export {findEmployeesFromMarketing}
 
 
 /**
@@ -136,7 +165,13 @@ const findBigPrices = (prices=[121, 41, 56, 1245]) => {
  * Ha szerepel benne a `gmail` részlet akkor gmail-esnek lehet venni.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
-
+ const findGermanMigrants = function(citizens=[{nation: 'German', email: 'franz@gmail.com', city: 'Budapest'}]){
+    const germanArr =[]
+    citizens.forEach(item=>{
+        if(item.nation ==='German' && item.city ==='Budapest' && item.email.includes('gmail')) germanArr.push(item)
+    })
+    return germanArr
+    }
 
 
 export {

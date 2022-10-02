@@ -18,8 +18,8 @@
  * FONTOS: az eredeti tömb, tehát a names az nem fog megváltozni!
  * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
  */
- function addNamePrefix(names = ['Ali', 'Géza', 'Botond']) {
-    return names.map( name => `Dear ${name}!` );
+function addNamePrefix(names = ['Ali', 'Géza', 'Botond']) {
+    return names.map(name => `Dear ${name}!`);
 }
 
 /**
@@ -42,7 +42,7 @@
  * karaktert amit nagybetűssé alakítottunk, majd a maradékot összefűztük vele.
  */
 const transformTitleCase = (foods = ['milk', 'bread', 'apple']) => {
-    // 
+    return foods.map(food => food[0].toUpperCase() + food.slice(1));
 }
 
 /**
@@ -58,8 +58,14 @@ const transformTitleCase = (foods = ['milk', 'bread', 'apple']) => {
  * A módosításnál először ellenőrzöd a nemet, és utána beállítod a neki  
  * megfelelő prefixumot.
  */
-const addNamePrefixToStudents = (students = [{lastName: 'Doe', gender: 'male'}]) => {
-    // 
+const addNamePrefixToStudents = (students = [{ lastName: 'Doe', gender: 'male' }]) => {
+    return students.map(student => {
+        if (student.gender === 'male') {
+            student.lastName = `Mr. ${student.lastName}`
+        } else {
+            student.lastName = `Ms. ${student.lastName}`
+        }
+    })
 }
 
 /**
@@ -72,7 +78,9 @@ const addNamePrefixToStudents = (students = [{lastName: 'Doe', gender: 'male'}])
  * @returns {number[]} - az árak 1.3-szorosa.
  * @desc EXPORTÁLD A FÜGGVÉNYT!
  */
-
+const getSellPrices = (prices = [75, 80, 56, 1245]) => {
+    return prices.map(price => price * 1.3)
+}
 
 
 /**
@@ -88,7 +96,9 @@ const addNamePrefixToStudents = (students = [{lastName: 'Doe', gender: 'male'}])
  * Template-literallal dolgozz.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
-
+const getStudentReports = (students = [{ firstName: 'John', lastName: 'Doe', points: 20 }]) => {
+    return students.sort(student => `${student.firstName} ${student.lastName}, points: ${student.points}`)
+}
 
 
 /**
@@ -106,7 +116,9 @@ const addNamePrefixToStudents = (students = [{lastName: 'Doe', gender: 'male'}])
  * ({...student, result: student.points > 50 ? 'passing' : 'not passing'})
  * EXPORTÁLD A FÜGGVÉNYT!
  */
-
+const addStudentReports = (students = [{ firstName: 'John', points: 20 }]) => {
+    return students.map((student) => ({ ...student, result: student.points > 50 ? "passing" : "not passing", }));
+};
 
 
 /**
@@ -123,6 +135,9 @@ const addNamePrefixToStudents = (students = [{lastName: 'Doe', gender: 'male'}])
  * @returns {[Object]} - az income-al kiegészített employee objektumok tömbje.
  * @desc EXPORTÁLD A FÜGGVÉNYT!
  */
+const addCorrectedIncome = (employees = [{ name: 'Bob', salary: 200000, premium: 1000, corr: 0.2 }]) => {
+    return employees.map((employee) => ({ ...employees, income: (employee.salary + employee.premium) * (1 + employee.corr) }));
+};
 
 
 
@@ -144,7 +159,11 @@ const addNamePrefixToStudents = (students = [{lastName: 'Doe', gender: 'male'}])
  * EXPORTÁLD A FÜGGVÉNYT!
  */
 
-
+const addDishPrices = (dishes = [{ id: 1, kcal: 101, type: 'dessert' }]) => {
+    return dishes.map((dish) => ({
+        ...dishes, price: dish.type == 'dessert' ? Math.round(200 - dish.kcal * 1.5) : Math.round(25 + dish.kcal),
+    }));
+};
 
 export {
     transformTitleCase,

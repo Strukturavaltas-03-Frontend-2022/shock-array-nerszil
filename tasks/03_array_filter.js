@@ -18,8 +18,8 @@
  * FONTOS: az eredeti tömb, tehát a names az nem fog megváltozni!
  * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
  */
- function filterArrayElements(names = ['Ali', 'Géza', 'Botond']) {
-    return names.filter( name => name.length > 3 );
+function filterArrayElements(names = ['Ali', 'Géza', 'Botond']) {
+    return names.filter(name => name.length > 3);
 }
 
 /**
@@ -40,7 +40,7 @@
  * @desc Ha segítség kell, nézd meg a példafüggvényt feljebb.
  */
 const fourCharFoods = (foods = ['milk', 'bread', 'apple']) => {
-    // 
+    return foods.filter(food => food.length == 4)
 }
 
 /**
@@ -56,7 +56,7 @@ const fourCharFoods = (foods = ['milk', 'bread', 'apple']) => {
  * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
  */
 const findNamesWithA = (names = ['Bill', 'Anna', 'Andy']) => {
-    // 
+    return names.filter(name => name.toLowerCase().includes(name.includes('a'));
 }
 
 /**
@@ -67,8 +67,8 @@ const findNamesWithA = (names = ['Bill', 'Anna', 'Andy']) => {
  * @param {number[]} [prices=[75, 80, 56, 1245]] prices - árak tömbje.
  * @returns {number[]} - azok az elemek amelyek 1.27-szerese nagyobb mint 100.
  */
-const findBigPrices = (prices=[75, 80, 56, 1245]) => {
-    // 
+const findBigPrices = (prices = [75, 80, 56, 1245]) => {
+    return prices.filter(price => (price * 1.27) > 100);
 }
 
 /**
@@ -83,7 +83,9 @@ const findBigPrices = (prices=[75, 80, 56, 1245]) => {
  * Tehát ha a páratlan számokat keresed akkor a number % 2 nem lesz 0.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
-
+const filterOdds = (prices = [121, 41, 56, 1245]) => {
+    return prices.filter(price => !(price % 2 === 0))
+}
 
 
 /**
@@ -99,7 +101,10 @@ const findBigPrices = (prices=[75, 80, 56, 1245]) => {
  * évszámának a különbsége több mint 10.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
-
+const filterOldCars = (cars = [{ man: 'Ford', year: 2000, type: 'fiesta' }]) => {
+    const date = new Date().getFullYear;
+    return cars.filter(age => date - age.year > 10)
+}
 
 
 /**
@@ -115,7 +120,12 @@ const findBigPrices = (prices=[75, 80, 56, 1245]) => {
  * EXPORTÁLD A FÜGGVÉNYT!
  */
 
-
+const findAdultCitizens = function (citizens = [{ id: '33DDffgz', bd: 1987, nation: 'Hungarian' }]) {
+    const actualYear = new Date().getFullYear()
+    const newArr = citizens.filter(item => actualYear - item.bd > 18 && item.nation === 'Hungarian')
+    return newArr
+}
+export { findAdultCitizens }
 
 /**
  * 7. feladat
@@ -129,7 +139,10 @@ const findBigPrices = (prices=[75, 80, 56, 1245]) => {
  * EXPORTÁLD A FÜGGVÉNYT!
  */
 
-
+ const filterDietFoods = function(dishes=[{id: 1, kcal: 101, type: 'dessert'}]){
+    const newArr=dishes.filter(item=> item.type === 'dessert' && item.kcal<100)
+    return newArr
+}
 
 export {
     fourCharFoods,
